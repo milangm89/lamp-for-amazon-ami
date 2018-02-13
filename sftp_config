@@ -4,7 +4,8 @@
 
 #Default rules for everybody
 <Default>
-	GlobalDownload		50k	#total speed download for all clients
+#	GlobalDownload		50k	#total speed download for all clients
+#GlobalDownload	0
 					# o -> bytes   k -> kilo bytes   m -> mega bytes
 	GlobalUpload		0	#total speed download for all clients (0 for unlimited)
 	Download 		5k	#limit speed download for each connection
@@ -13,13 +14,19 @@
 	VirtualChroot		true	#fake a chroot to the home account
 	LimitConnection		10	#max connection for the server sftp
 #	LimitConnectionByUser	1	#max connection for the account
-LimitConnectionByUser	5
+#LimitConnectionByUser	5
 #	LimitConnectionByIP	2	#max connection by ip for the account
-LimitConnectionByIP 5
-	Home			/home/$USER	#overrite home of the user but if you want you can use
-						#	environment variable (ie: Home /home/$USER)
+LimitConnectionByIP	5
+#	Home			/home/$USER	#overrite home of the user but if you want you can use
+#						#	environment variable (ie: Home /home/$USER)
 	IdleTimeOut		5m	#(in second) deconnect client is idle too long time
 	ResolveIP		true	#resolve ip to dns
+ForceUser	apache
+ForceGroup	apache
+DisableSetAttribute	true
+ForceUser	apache
+ForceGroup	apache
+DisableSetAttribute	true
 #	IgnoreHidden		true	#treat all hidden files as if they don't exist
 #	DirFakeUser		true	#Hide real file/directory owner (just change displayed permissions)
 #	DirFakeGroup		true	#Hide real file/directory group (just change displayed permissions)
@@ -29,7 +36,9 @@ LimitConnectionByIP 5
 #	MaxOpenFilesForUser	20	#limit user to open x files on same time
 #	MaxWriteFilesForUser	10	#limit user to x upload on same time
 #	MaxReadFilesForUser	10	#limit user to x download on same time
-	DefaultRights		0640 0750	#Set default rights for new file and new directory
+#	DefaultRights		0640 0750	#Set default rights for new file and new directory
+DefaultRights	0644	0755
+#DefaultRights	0644	0755
 #	MinimumRights		0400 0700	#Set minimum rights for files and dirs
 
 	ShowLinksAsLinks	false	#show links as their destinations
@@ -45,11 +54,13 @@ LimitConnectionByIP 5
 #	ExpireDate	"2007-02-28 18:31:01"
 #</Group>
 
-#<Group sftp_administrator>
+<Group sftp_administrator>
 #	IsAdmin		true		#can admin the server
 #	VirtualChroot	false		#you must disable chroot to have a full support of admin
-#	StayAtHome	true
+	StayAtHome	true
 #	IdleTimeOut	0
+</Group>
+</Group>
 #</Group>
 
 #<Group old_client>
@@ -74,7 +85,6 @@ LimitConnectionByIP 5
 #	DisableAccount		false	#enable account
 #	IdleTimeOut		0	#disable timeout
 #	LimitConnectionByIP	0	#no limit
-LimitConnectionByIP 5
 #</IpRange>
 
 #<Group trusted_users>

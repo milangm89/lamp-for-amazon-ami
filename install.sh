@@ -49,7 +49,11 @@ set_hostname(){
 	echo " "
 	hostname $new_hostname
 	echo " Restarting network service"
+<<<<<<< HEAD
 	/etc/init.d/network reload
+=======
+	/etc/init.d/network restart
+>>>>>>> 6e50e9c93e675bd81873459eb9769ccd1245686d
 	echo "You have set your hostname as $new_hostname"
 	echo "Reboot the server to make it effective "
 
@@ -424,6 +428,7 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
+<<<<<<< HEAD
 
 sftp_create() {
 
@@ -509,3 +514,5 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
+=======
+>>>>>>> 6e50e9c93e675bd81873459eb9769ccd1245686d

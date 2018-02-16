@@ -49,11 +49,8 @@ set_hostname(){
 	echo " "
 	hostname $new_hostname
 	echo " Restarting network service"
-<<<<<<< HEAD
 	/etc/init.d/network reload
-=======
 	/etc/init.d/network restart
->>>>>>> 6e50e9c93e675bd81873459eb9769ccd1245686d
 	echo "You have set your hostname as $new_hostname"
 	echo "Reboot the server to make it effective "
 
@@ -428,7 +425,6 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-<<<<<<< HEAD
 
 sftp_create() {
 
@@ -436,7 +432,7 @@ if [ -f /usr/bin/mysecureshell ] || [ -f /bin/MySecureShell ] ; then
     echo "Previous sftp installation found! Aborting Installation!! "
     else
 echo "Installing Mysecureshell sftp package"
-yum -y install gcc glibc glibc-common gd gd-devel
+yum -y install gcc glibc glibc-common gd gd-devel perl-Env
 cd /usr/local/src/
 git clone https://github.com/mysecureshell/mysecureshell.git
 cd mysecureshell/
@@ -493,7 +489,7 @@ sed -i '/#\tIdleTimeOut\t0/a </Group>' /etc/ssh/sftp_config
 echo "Creating sftp group"
 groupadd sftp_administrator
 echo "Creating SFTP user"
-useradd -m -d /var/www/html/ -s /usr/bin/mysecureshell sftpuser
+useradd -m -d /var/www/html -s /usr/bin/mysecureshell sftpuser
 pwd_sftp=`mkpasswd -l 15`
 echo "$pwd_sftp" | passwd sftpuser --stdin
 

@@ -499,6 +499,8 @@ echo "$pwd_sftp" | passwd sftpuser --stdin
 
 echo "Changing ownership of /var/www/html to apache"
 chown -R apache:apache /var/www/html/
+usermod -a -G apache sftpuser
+
 echo "Restarting ssh service"
 /etc/init.d/sshd restart
 echo " The username is : sftpuser and the password is : $pwd_sftp "
@@ -514,5 +516,3 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-=======
->>>>>>> 6e50e9c93e675bd81873459eb9769ccd1245686d

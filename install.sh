@@ -160,7 +160,7 @@ done
 
 mysql_57() {
 echo "Removing existing packages"
-rpm -e --nodeps `rpm -qa | grep -i mysql | grep -v php`
+rpm -e --nodeps $(rpm -qa | grep -i mysql | grep -v php)
 echo "Installing MySQL 5.7 packages"
 yum -y install mysql57 mysql57-server
 echo "Installed MySQL 5.7 packages"
@@ -168,7 +168,7 @@ echo "Starting MySQL services"
 /etc/init.d/mysqld start
 chkconfig mysqld on
 echo "Setting MySQL password"
-mys_pwd=`mkpasswd -l 16`
+mys_pwd=$(mkpasswd -l 16)
 /usr/libexec/mysql57/mysqladmin -u root password '$mys_pwd'
 mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "
@@ -186,7 +186,7 @@ echo "Starting MySQL services"
 /etc/init.d/mysqld start
 chkconfig mysqld on
 echo "Setting MySQL password"
-mys_pwd=`mkpasswd -l 16`
+mys_pwd=$(mkpasswd -l 16)
 /usr/libexec/mysql56/mysqladmin -u root password '$mys_pwd'
 mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "
@@ -196,7 +196,7 @@ echo -e "[client]\nuser=root\npassword='$mys_pwd'" > /root/.my.cnf
 
 mysql_55() {
 echo "Removing existing packages"
-rpm -e --nodeps `rpm -qa | grep -i mysql | grep -v php`
+rpm -e --nodeps $(rpm -qa | grep -i mysql | grep -v php)
 echo "Installing MySQL 5.5 packages"
 yum -y install mysql55 mysql55-server
 echo "Installed MySQL 5.5 packages"
@@ -204,10 +204,10 @@ echo "Starting MySQL services"
 /etc/init.d/mysqld start
 chkconfig mysqld on
 echo "Setting MySQL password"
-mys_pwd=`mkpasswd -l 16`
+mys_pwd=$(mkpasswd -l 16)
 /usr/libexec/mysql55/mysqladmin -u root password '$mys_pwd'
 mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
-echo "MySQL password is set to "$mys_pwd" "
+echo "MySQL password is set to '$mys_pwd'"
 echo "Adding MySQL password to /root/.my.cnf"
 echo -e "[client]\nuser=root\npassword='$mys_pwd'" > /root/.my.cnf
 }
@@ -240,12 +240,12 @@ do
 done
 
 install_php71() {
-apache_ver=`httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2`
+apache_ver=$(httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2)
 ver_check=2.4
 if [ "$apache_ver" == "$ver_check" ];
 then
 echo "Removing existing packages if any"
-rpm -e --nodeps `rpm -qa | grep php | grep -v -i myadmin`
+rpm -e --nodeps $(rpm -qa | grep php | grep -v -i myadmin)
 echo "Installing PHP 7.1 packages"
 yum -y install php71 php71-common php71-devel php71-gd php71-imap php71-intl php71-mbstring php71-mcrypt php71-mysqlnd php7-pear php71-soap
 echo "Installed PHP 7.1 packages"
@@ -257,12 +257,12 @@ fi
 }
 
 install_php70() {
-apache_ver=`httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2`
+apache_ver=$(httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2)
 ver_check=2.4
 if [ "$apache_ver" == "$ver_check" ];
 then
 echo "Removing existing packages if any"
-rpm -e --nodeps `rpm -qa | grep php | grep -v -i myadmin`
+rpm -e --nodeps $(rpm -qa | grep php | grep -v -i myadmin)
 echo "Installing PHP 7.0 packages"
 yum -y install php70 php70-common php70-devel php70-gd php70-imap php70-intl php70-mbstring php70-mcrypt php70-mysqlnd php7-pear php70-soap
 echo "Installed PHP 7.0 packages"
@@ -274,12 +274,12 @@ fi
 }
 
 install_php56() {
-apache_ver=`httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2`
+apache_ver=$(httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2)
 ver_check=2.4
 if [ "$apache_ver" == "$ver_check" ];
 then
 echo "Removing existing packages if any"
-rpm -e --nodeps `rpm -qa | grep php | grep -v -i myadmin`
+rpm -e --nodeps $(rpm -qa | grep php | grep -v -i myadmin)
 echo "Installing PHP 5.6 packages"
 yum -y install php56 php56-common php56-devel php56-gd php56-imap php56-intl php56-mbstring php56-mcrypt php56-mysqlnd php-pear
 echo "Installed PHP 5.6 packages"
@@ -291,7 +291,7 @@ fi
 }
 
 install_php55() {
-apache_ver=`httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2`
+apache_ver=$(httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2)
 ver_check=2.4
 if [ "$apache_ver" == "$ver_check" ];
 then
@@ -303,17 +303,17 @@ echo "Installed PHP 5.5 packages"
 echo "Restarting Apache service"
 /etc/init.d/httpd restart
 else
-echo "The selected php version is not compatible with the installed apache version "
+echo "The selected php version is not compatible with the installed apache version"
 fi
 }
 
 install_php53() {
-apache_ver=`httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2`
+apache_ver=$(httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2)
 ver_check=2.4
 if [ "$apache_ver" != "$ver_check" ];
 	then
 		echo "Removing existing packages if any"
-		rpm -e --nodeps `rpm -qa | grep php | grep -v -i myadmin`
+		rpm -e --nodeps $(rpm -qa | grep php | grep -v -i myadmin)
 		echo "Installing PHP 5.3 packages"
 		yum -y install php php-common php-devel php-gd php-imap php-intl php-mbstring php-mcrypt php-mysqlnd php-pear
 		echo "Installed PHP 5.3 packages"
@@ -362,8 +362,8 @@ do
 done
 
 install_phpmyadmin() {
-php_ver=`php -v | head -1 | awk '{print $2}' | cut -d . -f1,2`
-apache_ver=`httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2`
+php_ver=$(php -v | head -1 | awk '{print $2}' | cut -d . -f1,2)
+apache_ver=$(httpd -v | grep -i apache | awk '{print $3}' | cut -d / -f2 | cut -d . -f1,2)
 
 if `rpm -qa | grep -q -i phpmyadmin`
         then
@@ -493,7 +493,7 @@ echo "Creating sftp group"
 groupadd sftp_administrator
 echo "Creating SFTP user"
 useradd -m -d /var/www/html -s /usr/bin/mysecureshell sftpuser
-pwd_sftp=`mkpasswd -l 15`
+pwd_sftp=$(mkpasswd -l 16)
 echo "$pwd_sftp" | passwd sftpuser --stdin
 
 echo "Changing ownership of /var/www/html to apache"

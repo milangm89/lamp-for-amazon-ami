@@ -172,8 +172,8 @@ mys_pwd=`mkpasswd -l 16`
 /usr/libexec/mysql57/mysqladmin -u root password '$mys_pwd'
 mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "
-echo "Adding MySQL password to /root/.my.cnf "
-echo -e "[client]\nuser=root\npassword=$mys_pwd" > /root/.my.cnf
+echo "Adding MySQL password to /root/.my.cnf"
+echo -e "[client]\nuser=root\npassword='$mys_pwd'" > /root/.my.cnf
 }
 
 mysql_56() {
@@ -191,7 +191,7 @@ mys_pwd=`mkpasswd -l 16`
 mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "
 echo "Adding MySQL password to /root/.my.cnf "
-echo -e "[client]\nuser=root\npassword=$mys_pwd" > /root/.my.cnf
+echo -e "[client]\nuser=root\npassword='$mys_pwd'" > /root/.my.cnf
 }
 
 mysql_55() {
@@ -208,8 +208,8 @@ mys_pwd=`mkpasswd -l 16`
 /usr/libexec/mysql55/mysqladmin -u root password '$mys_pwd'
 mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "
-echo "Adding MySQL password to /root/.my.cnf "
-echo -e "[client]\nuser=root\npassword=$mys_pwd" > /root/.my.cnf
+echo "Adding MySQL password to /root/.my.cnf"
+echo -e "[client]\nuser=root\npassword='$mys_pwd'" > /root/.my.cnf
 }
 
 PS3='Which MySQL version do you wish to install? Please enter your choice: '

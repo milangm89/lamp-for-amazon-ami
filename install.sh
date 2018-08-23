@@ -170,6 +170,7 @@ chkconfig mysqld on
 echo "Setting MySQL password"
 mys_pwd=`mkpasswd -l 15`
 /usr/libexec/mysql57/mysqladmin -u root password '$mys_pwd'
+mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "
 echo "Adding MySQL password to /root/.my.cnf "
 echo -e "[client]\nuser=root\npassword=$mys_pwd" > /root/.my.cnf
@@ -187,6 +188,7 @@ chkconfig mysqld on
 echo "Setting MySQL password"
 mys_pwd=`mkpasswd -l 15`
 /usr/libexec/mysql56/mysqladmin -u root password '$mys_pwd'
+mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "
 echo "Adding MySQL password to /root/.my.cnf "
 echo -e "[client]\nuser=root\npassword=$mys_pwd" > /root/.my.cnf
@@ -204,6 +206,7 @@ chkconfig mysqld on
 echo "Setting MySQL password"
 mys_pwd=`mkpasswd -l 15`
 /usr/libexec/mysql55/mysqladmin -u root password '$mys_pwd'
+mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "
 echo "Adding MySQL password to /root/.my.cnf "
 echo -e "[client]\nuser=root\npassword=$mys_pwd" > /root/.my.cnf

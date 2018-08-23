@@ -168,7 +168,7 @@ echo "Starting MySQL services"
 /etc/init.d/mysqld start
 chkconfig mysqld on
 echo "Setting MySQL password"
-mys_pwd=`mkpasswd -l 15`
+mys_pwd=`mkpasswd -l 16`
 /usr/libexec/mysql57/mysqladmin -u root password '$mys_pwd'
 mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "
@@ -186,7 +186,7 @@ echo "Starting MySQL services"
 /etc/init.d/mysqld start
 chkconfig mysqld on
 echo "Setting MySQL password"
-mys_pwd=`mkpasswd -l 15`
+mys_pwd=`mkpasswd -l 16`
 /usr/libexec/mysql56/mysqladmin -u root password '$mys_pwd'
 mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "
@@ -204,7 +204,7 @@ echo "Starting MySQL services"
 /etc/init.d/mysqld start
 chkconfig mysqld on
 echo "Setting MySQL password"
-mys_pwd=`mkpasswd -l 15`
+mys_pwd=`mkpasswd -l 16`
 /usr/libexec/mysql55/mysqladmin -u root password '$mys_pwd'
 mysql -u root -p'$mys_pwd' -e "SET PASSWORD FOR 'root'@'localhost'= PASSWORD('$mys_pwd');"
 echo "MySQL password is set to "$mys_pwd" "

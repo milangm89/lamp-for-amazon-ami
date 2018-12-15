@@ -17,11 +17,8 @@
 #Port 22
 Port 64567
 #AddressFamily any
-<<<<<<< HEAD
 AddressFamily inet
-#AddressFamily inet
-=======
->>>>>>> 6e50e9c93e675bd81873459eb9769ccd1245686d
+
 #ListenAddress 0.0.0.0
 #ListenAddress ::
 
@@ -136,14 +133,8 @@ AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
 AcceptEnv XMODIFIERS
 
 # override default of no subsystems
-<<<<<<< HEAD
 #Subsystem sftp	/usr/libexec/openssh/sftp-server
 Subsystem sftp /usr/bin/mysecureshell -c sftp-server
-#Subsystem sftp /usr/bin/mysecureshell -c sftp-server
-Subsystem sftp /usr/bin/mysecureshell -c sftp-server
-=======
-Subsystem sftp	/usr/libexec/openssh/sftp-server
->>>>>>> 6e50e9c93e675bd81873459eb9769ccd1245686d
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs

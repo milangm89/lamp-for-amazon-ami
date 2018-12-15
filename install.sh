@@ -1,5 +1,6 @@
 #!/bin/bash
 # Author : Milan George
+# Version 1.01
 
 # Function for yum update
 

@@ -1,3 +1,0 @@
-NETWORKING=yes
-HOSTNAME=server.test.com
-NOZEROCONF=yes
